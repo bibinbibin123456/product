@@ -38,6 +38,15 @@ app.post("/",(req,res)=>{
 
     })
 
+    app.put("/edit/:id",async(req,res)=>{
+        try {
+            var data= await productModel.findByIdAndUpdate(req.params.id,req.body);
+            res.send({message:"updated succesfully",data});
+        } catch (error) {
+            res.send(error);
+            
+        }
+    })
 
 app.listen(PORT,(req,res)=>{
     console.log(`server is listening in port ${PORT}`);
